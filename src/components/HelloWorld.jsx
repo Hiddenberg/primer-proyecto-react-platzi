@@ -1,6 +1,8 @@
 import React from 'react';
 import '../assets/styles/App.scss';
 
+/* COMPONENTE DE PRUEBA, (NO ES PARTE DEL PROYECTO) */
+
 const nums = [3,1,2223,345,57544,5,4556,74545,7,8,54];
 const numsListed = nums.map(number => <li key={number.toString()}>{number}</li>);
 
