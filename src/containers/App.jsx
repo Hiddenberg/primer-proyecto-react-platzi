@@ -7,13 +7,14 @@ import HelloWorld from '../components/HelloWorld';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
+import Footer from '../components/Footer';
 
 const App = () => (
    <div className="App">
       <Header />
       <Search />
 
-      <Categories>
+      <Categories title="Mi lista">
          <Carousel>
             <CarouselItem />
             <CarouselItem />
@@ -22,6 +23,23 @@ const App = () => (
             <CarouselItem />
          </Carousel>
       </Categories>
+      
+      
+      <Categories title="Tendencias">
+         <Carousel>
+            <CarouselItem />
+            <CarouselItem />
+         </Carousel>
+      </Categories>
+
+      <Categories title="Originales de Platzi video">
+         <Carousel>
+            <CarouselItem />
+            <CarouselItem />
+         </Carousel>
+      </Categories>
+
+      <Footer />
    </div>
 );
 

@@ -1,0 +1,18 @@
+.footer {
+   display: flex;
+   height: 10vh;
+   width: 100%;
+   justify-content: space-around;
+   align-items: center;
+}
+.footer a {
+   color: white;
+   text-decoration: none;
+}
+.footer a:hover {
+   text-decoration: underline;
+}
+.footer a:focus {
+   border-bottom: #00ffaa solid 2px;
+   outline: none;
+}
