@@ -1,7 +1,10 @@
+@import "./Vars.scss";
+@import "./Media.scss";
+
 body {
    margin: 0;
-   background-color: #ab88ff;
-   font-family: 'Mulish', sans-serif;
+   background-color: $main-color;
+   font-family: $theme-font;
 }
 
 *{
@@ -31,3 +34,7 @@ h1 {
    background: linear-gradient(#21C08B, #AB88FF);
 }
 
+.vibutton {
+   height: 40px;
+   width: 200px;
+}
