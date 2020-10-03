@@ -45,3 +45,15 @@
 .details-icon:hover {
    filter: brightness(1.2);
 }
+
+.desc-container {
+   width: 80%;
+}
+
+.carousel-item__details--subtitle, .carousel-item__details--title {
+   white-space: normal;
+   max-height: 25%;
+   width: 100%;
+   text-overflow: ellipsis;
+   overflow: auto;
+}
