@@ -3,18 +3,16 @@ import '../assets/styles/components/CarouselItem.scss';
 import playIcon from '../assets/images/play.svg'
 import addIcon from '../assets/images/add.svg'
 
-const URL_IMAGE = "https://images.idgesg.net/images/article/2019/05/cso_best_security_software_best_ideas_best_technology_lightbulb_on_horizon_of_circuit_board_landscape_with_abstract_digital_connective_technology_atmosphere_ideas_innovation_creativity_by_peshkov_gettyimages-965785212_3x2_2400x1600-100797318-large.jpg"
-
-const CarouselItem = () => (
+const CarouselItem = ({ cover, title, year, contentRating, duration }) => (
    <div className="carousel-item">
-      <img className="carousel-item-img" src={URL_IMAGE} />
+      <img className="carousel-item-img" src={cover} />
       <div className="carousel-item__details">
          <div>
             <img className="details-icon" src={ playIcon } alt="play" />
             <img className="details-icon" src={ addIcon } alt="add" />
          </div>
-         <p className="carousel-item__details--title">Titulo descriptivo</p>
-         <p className="carousel-item__details--subtitle">2019 16+ 114 minutos</p>
+         <p className="carousel-item__details--title">{title} - {year}</p>
+         <p className="carousel-item__details--subtitle">{Math.floor(duration/60)}hrs {duration%60}mins</p>
       </div>
    </div>
 )
