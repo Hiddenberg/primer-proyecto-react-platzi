@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import '../assets/styles/App.scss';
 
 import Header from '../components/Header';
@@ -12,46 +12,63 @@ import Footer from '../components/Footer';
 
 
 const App = () => {
+   const EN_CARTELERA = 'https://api.themoviedb.org/3/movie/now_playing?api_key=b89fc45c2067cbd33560270639722eae&language=en-US&page=2';
+   const UPCOMIN_URL = 'https://api.themoviedb.org/3/movie/upcoming?api_key=b89fc45c2067cbd33560270639722eae&language=en-US&page=6';
+   const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&page=30&api_key=b89fc45c2067cbd33560270639722eae';
+   let pages = []
+   
    const [ videos, setVideos ] = useState([]);
-   useEffect(() => {
-      fetch('http://localhost:3000/initalState')
-         .then(response => response.json())
-         .then(data => setVideos(data));
-   },[])
 
-   console.log(videos);
-
-   return (<div className="App">
-      <Header />
-      <Search />
-
-      {videos.mylist?.length > 0 &&
-         <Categories title="Mi lista">
-            <Carousel>
-               <CarouselItem />
-            </Carousel>
-         </Categories>
+   function fetchD() {
+      let promiseList = []
+      for (let i = 1; i <= 100; i++) {
+         let JSONpromise = fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&page=${i}&api_key=b89fc45c2067cbd33560270639722eae`)
+         .then(response => response.json());
+         promiseList.push(JSONpromise)
       }
-      
-      
-      <Categories title="Tendencias">
-         <Carousel>
-            {videos.trends?.map(item => 
-               <CarouselItem key={item.id} {...item}/>
-            )}
-         </Carousel>
-      </Categories>
+      Promise.all(promiseList).then(prom => setVideos(prom))
+   }
+   useEffect(fetchD,[])
 
-      <Categories title="Originales de Platzi video">
-         <Carousel>
-         {videos.originals?.map(item => 
-               <CarouselItem key={item.id} {...item}/>
-            )}
-         </Carousel>
-      </Categories>
 
-      <Footer />
-   </div>
+   return (
+
+      <div className="App">
+         <Header />
+         <Search />
+
+{/*          {videos?.mylist?.length > 0 &&
+            <Categories title="Mi lista">
+               <Carousel>
+                  <CarouselItem />
+               </Carousel>
+            </Categories>
+         } */}
+         
+         {console.log(videos)}
+         {videos.length > 0 &&
+            videos.map(data => (
+               <Categories key={data.page} title={"pagina" + data.page}>
+                  <Carousel>
+                     {data.results?.map(item => 
+                        <CarouselItem key={item.id} {...item}/>
+                     )}
+                  </Carousel>
+               </Categories>
+            ))
+         }
+
+
+{/*          <Categories title="Originales de Platzi video">
+            <Carousel>
+            {videos?.originals?.map(item => 
+                  <CarouselItem key={item.id} {...item}/>
+               )}
+            </Carousel>
+         </Categories> */}
+
+         <Footer />
+      </div>
    )
 }
 
