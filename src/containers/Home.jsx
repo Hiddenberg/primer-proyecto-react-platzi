@@ -16,8 +16,8 @@ const Home = () => {
 
    const initialState = useInitialState(API)
 
-   return (<div className="App">
-      <Header />
+   return (
+   <React.Fragment> {/* aqui como ya estamos usando la clase app desde un nivel mas arriba, convertiremos esta parte en un fragmento */}
       <Search />
 
       {initialState.mylist?.length > 0 &&
@@ -46,9 +46,7 @@ const Home = () => {
          )}
          </Carousel>
       </Categories>
-
-      <Footer />
-   </div>
+   </React.Fragment>
    )
 }
 

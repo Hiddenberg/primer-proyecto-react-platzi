@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, link } from 'react-router-dom';
 
 import '../assets/styles/components/LoginReg.scss'
 import googleIcon from '../assets/images/google-icon.svg'
@@ -27,7 +28,7 @@ const Login = () => (
             <img src={facebookIcon} alt="facebook-login" /><span>Login with Facebook</span>
             </div>
          </section>
-         <p className="login__container--register"><a href="/">Create a new account</a></p>
+         <p className="login__container--register"><Link to="/register">Create a new account</Link></p>
       </section>
    </section>
 )
