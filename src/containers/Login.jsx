@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../assets/styles/components/Login.scss'
+import '../assets/styles/components/LoginReg.scss'
 import googleIcon from '../assets/images/google-icon.svg'
 import facebookIcon from '../assets/images/facebook-icon.svg'
 
