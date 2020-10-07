@@ -9,7 +9,7 @@ import deleteIcon from '../assets/images/delete.svg';
 
 const CarouselItem = (props) => {
    /* Aqui ↓ utilizamos la deconstruccion para traer directamente las propiedades de props en lugar de agregarlas desde los parametros de la funcion (↑) */
-   const { id, cover, title, year, duration } = props;
+   const { id, cover, title, year, duration, isList} = props;
    const handleSetFavorite = () => {
       props.setFavorite(
          {
@@ -27,8 +27,9 @@ const CarouselItem = (props) => {
          <div className="carousel-item__details">
             <div>
                <img className="details-icon" src={ playIcon } alt="play" />
-               <img className="details-icon" src={ addIcon } alt="add" onClick={handleSetFavorite}/>
-               <img className="details-icon" src={ deleteIcon } alt="add" onClick={() => handleDeleteFavorite(id)}/>
+               {isList ? <img className="details-icon" src={ deleteIcon } alt="add" onClick={() => handleDeleteFavorite(id)}/>
+               :<img className="details-icon" src={ addIcon } alt="add" onClick={handleSetFavorite}/>
+               }
             </div>
             <p className="carousel-item__details--title">{title} - {year}</p>
             <p className="carousel-item__details--subtitle">{Math.floor(duration/60)}hrs {duration%60}mins</p>
