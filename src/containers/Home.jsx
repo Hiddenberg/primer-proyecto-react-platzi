@@ -7,11 +7,8 @@ import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-import useInitialState from '../hooks/useInitialState'
-
 
 const Home = ({ myList, trends, originals }) => {
-
    return (
    <React.Fragment> {/* aqui como ya estamos usando la clase app desde un nivel mas arriba, convertiremos esta parte en un fragmento */}
       <Search />

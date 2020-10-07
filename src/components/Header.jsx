@@ -1,26 +1,46 @@
 import React from 'react';
-import { Link, link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import gravatar from '../utils/gravatar';
 import '../assets/styles/components/Header.scss';
 import logo from '../assets/images/logo-platzi.png';
 import userIcon from '../assets/images/profile-user.svg';
 
-const Header = () => (
-   <header className="header">
-      <Link to="/"> 
-         <img className="header__img" src={ logo } alt="" />
-      </Link> {/* Usamos el elemento link de react router dom, ya que nos permite poder
-      desplazarnos por nuestra aplicacion sin necesidad de hacer un refres a la pagina completa */}
-      <div className="header__menu">
-         <div className="header__menu--profile">
-            <img src={ userIcon } alt="user icon" />
-            <p>Perfil</p>
+const Header = ({ user }) => {
+   const userLogedIn = () => user.email !== undefined; /* Verificamos si nuestro usuario ya tiene un email registrado en su sesion */
+   return(
+      <header className="header">
+         <Link to="/"> 
+            <img className="header__img" src={ logo } alt="" />
+         </Link> {/* Usamos el elemento link de react router dom, ya que nos permite poder
+         desplazarnos por nuestra aplicacion sin necesidad de hacer un refresh a la pagina completa */}
+         <div className="header__menu">
+            <div className="header__menu--profile">
+               {userLogedIn() ?
+                  <img src={ gravatar(user.email) } alt="user icon" />
+                  :
+                  <img src={ userIcon } alt="user icon" />
+               }
+               <p>Perfil</p>
+            </div>
+            {userLogedIn() ?
+               <ul>
+                  <li><p>Bienvenido <b>{user.email}</b></p></li>
+                  <li><p>Mi perfil</p></li>
+                  <li><Link to="/register">Registro</Link></li>
+               </ul>
+               :
+               <ul>
+                  <li><Link to="/login">Iniciar sesion</Link></li>
+               </ul>
+            }
          </div>
-         <ul>
-            <li><Link to="/login">Iniciar sesion</Link></li>
-         </ul>
-      </div>
-      
-   </header>
-);
+      </header>
+   )};
 
-export default Header;
+const mapStateToProps = state => {
+   return {
+      user: state.user,
+   }
+}
+export default connect(mapStateToProps,null)(Header);

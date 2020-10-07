@@ -38,7 +38,7 @@ const CarouselItem = (props) => {
    )
 }
 
-CarouselItem.propTypes = {
+CarouselItem.propTypes = { /* Esto se usa para validar los elementos que estamos pasando como props */
    cover: Proptypes.string,
    title: Proptypes.string,
    year: Proptypes.number,
