@@ -13,13 +13,14 @@ form {
    padding-left: 30px;
    position: relative;
    overflow-y: hidden;
-
+   scrollbar-width: none;
    /* background: hsla(164, 38%, 18%, 1);
    background: linear-gradient(180deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
    background: -moz-linear-gradient(180deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
    background: -webkit-linear-gradient(180deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%); */
 }
 .carousel::-webkit-scrollbar {
+   scrollbar-width: none;
    display: none;
    background-color: rgba(0, 0, 0, 0.1);
    height: 10px;
