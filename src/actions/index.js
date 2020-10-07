@@ -5,5 +5,10 @@ export const setFavorite =  payload => ({
 
 export const deleteFavorite = payload => ({
    type: 'DELETE_FAVORITE',
-   payload,
+   payload: payload,
+});
+
+export const loginRequest = payload => ({
+   type: 'LOGIN_REQUEST',
+   payload: payload,
 });

@@ -1,8 +1,8 @@
 const reducer = (state,action) => {
    switch (action.type) {
       case 'SET_FAVORITE':
-         const itemExistsprev = state.myList.find(item => item.id === action.payload.id)
-         if(itemExistsprev) {
+         const itemExistsPrev = state.myList.find(item => item.id === action.payload.id)
+         if(itemExistsPrev) {
             return   {...state}
          } else {
             return {
@@ -14,6 +14,12 @@ const reducer = (state,action) => {
          return {
             ...state,
             myList: state.myList.filter(items => items.id !== action.payload)
+         }
+
+      case 'LOGIN_REQUEST':
+         return {
+            ...state,
+            user: action.payload,
          }
 
       default:
