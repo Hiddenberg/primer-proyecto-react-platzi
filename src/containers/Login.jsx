@@ -1,5 +1,5 @@
 import React, { useState, } from 'react';
-import { Link, link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import '../assets/styles/components/LoginReg.scss'
@@ -27,6 +27,7 @@ const Login = props => {
       console.log(props);
       props.history.push('/')
    }
+   
    return(
    <section className="login">
       <section className="login__container">

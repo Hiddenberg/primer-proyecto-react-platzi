@@ -10,7 +10,6 @@ import userIcon from '../assets/images/profile-user.svg';
 
 const Header = (props) => {
 
-   console.log(props)
    const { user } = props
    const userLogedIn = () => user.email !== undefined; /* Verificamos si nuestro usuario ya tiene un email registrado en su sesion */
    const handleLogout = () => {
