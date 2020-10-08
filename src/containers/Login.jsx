@@ -20,7 +20,6 @@ const Login = props => {
          [event.target.name]: event.target.value
       })
    }
-
    const handleSubmit = event => {
       event.preventDefault();
       props.loginRequest(form);
